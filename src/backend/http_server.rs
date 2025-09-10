@@ -1,7 +1,7 @@
 use super::thread_pool::Pool;
 
 use http::header::{CONTENT_LENGTH, CONTENT_TYPE};
-use http::{HeaderValue, request, response};
+use http::{HeaderValue, StatusCode, request, response};
 
 use format_bytes::write_bytes;
 use thiserror::Error;
@@ -104,12 +104,17 @@ fn create_response(request: http::Request<()>) -> io::Result<HttpResponse> {
     })
   });
 
-  let mut content_path = Path::new("dist").join(content_path);
+  let dist_path = Path::new("dist");
+
+  let mut content_path = dist_path.join(content_path);
+  let mut status = StatusCode::OK;
+
   if !content_path.exists() {
-    content_path.set_file_name("404.html");
+    content_path = dist_path.join("404.html");
+    status = StatusCode::NOT_FOUND;
   }
 
-  let mut response = response::Builder::new();
+  let mut response = response::Builder::new().status(status);
 
   let content_bytes = fs::read(content_path)?;
 
