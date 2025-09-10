@@ -1,0 +1,163 @@
+use super::thread_pool::Pool;
+
+use http::header::{CONTENT_LENGTH, CONTENT_TYPE};
+use http::{HeaderValue, request, response};
+
+use format_bytes::write_bytes;
+use thiserror::Error;
+
+use std::fs;
+use std::io::{self, BufReader, BufWriter, Read, Write};
+use std::net::{TcpListener, TcpStream, ToSocketAddrs};
+use std::path::Path;
+
+#[derive(Debug)]
+pub struct Server {
+  thread_pool: Pool,
+  listener: TcpListener,
+}
+
+impl Server {
+  pub fn bind(addr: impl ToSocketAddrs) -> io::Result<Self> {
+    let thread_pool = Pool::with_capacity(4);
+    let listener = TcpListener::bind(addr)?;
+
+    Ok(Self { thread_pool, listener })
+  }
+
+  pub fn handle_conns(&mut self) -> io::Result<()> {
+    for stream in self.listener.incoming() {
+      let stream = stream?;
+
+      self.thread_pool.execute(|| {
+        if let Err(err) = Self::handle_conn(stream) {
+          eprintln!("Failed to handle connection: {err}");
+        }
+      });
+    }
+    Ok(())
+  }
+
+  fn handle_conn(stream: TcpStream) -> io::Result<()> {
+    let (mut reader, mut writer) =
+      (BufReader::new(&stream), BufWriter::new(&stream));
+
+    let mut buf = [0; 8192];
+
+    let n = reader.read(&mut buf)?;
+
+    let string = str::from_utf8(&buf[..n]).unwrap();
+    let request = match parse_request(string) {
+      Ok(req) => req,
+      Err(err) => panic!("Failed to parse request: {err}"),
+    };
+
+    let response = create_response(request)?;
+    let response_bytes = format_response_as_bytes(response)?;
+
+    writer.write_all(&response_bytes)
+  }
+}
+
+type HttpResponse = http::Response<Vec<u8>>;
+
+fn parse_request(string: &str) -> Result<http::Request<()>, ParseError> {
+  let mut lines = string.split("\r\n");
+
+  let mut split_head = lines
+    .next()
+    .map(str::split_ascii_whitespace)
+    .ok_or(ParseError::EmptyInput)?;
+
+  let _get = split_head.next();
+  let uri = split_head.next().ok_or(ParseError::MissingUri)?;
+
+  let request = request::Builder::new().uri(uri).body(()).unwrap();
+
+  Ok(request)
+}
+
+#[derive(Error, Debug)]
+enum ParseError {
+  #[error("Empty input provided")]
+  EmptyInput,
+  #[error("No uri were presented")]
+  MissingUri,
+}
+
+fn create_response(request: http::Request<()>) -> io::Result<HttpResponse> {
+  let content_path = match request.uri().path() {
+    "/" => "index.html",
+    p => &p[1..], // Trim the `/`
+  };
+
+  let extension = content_path.split_once('.').map(|(_, ext)| ext);
+  let content_type = extension.and_then(|ext| {
+    Some(match ext {
+      "html" => "text/html",
+      "css" => "text/css",
+      "js" => "application/javascript",
+      "png" => "image/png",
+      "jpg" => "image/jpeg",
+      "ico" => "image/x-icon",
+      _ => return None,
+    })
+  });
+
+  let mut content_path = Path::new("dist").join(content_path);
+  if !content_path.exists() {
+    content_path.set_file_name("404.html");
+  }
+
+  let mut response = response::Builder::new();
+
+  let content_bytes = fs::read(content_path)?;
+
+  let headers = response.headers_mut().unwrap();
+  headers.insert(CONTENT_LENGTH, content_bytes.len().into());
+
+  // If path was provided without extension,
+  // then leaving the "guess" job to a web-browser.
+  if let Some(ty) = content_type {
+    headers.insert(CONTENT_TYPE, HeaderValue::from_static(ty));
+  }
+
+  Ok(response.body(content_bytes).unwrap())
+}
+
+fn format_response_as_bytes(response: HttpResponse) -> io::Result<Vec<u8>> {
+  let status = response.status();
+
+  let head = format!(
+    "{:?} {} {}\r\n",
+    response.version(),
+    status.as_u16(),
+    status.canonical_reason().unwrap(),
+  );
+
+  let mut buf = head.into_bytes();
+
+  for (header_name, header_value) in response.headers() {
+    write_bytes!(
+      &mut buf,
+      b"{}: {}\r\n",
+      header_name.as_str().as_bytes(),
+      header_value.as_bytes()
+    )?;
+  }
+
+  write_bytes!(&mut buf, b"\r\n{}", response.body())?;
+
+  Ok(buf)
+}
+
+#[cfg(test)]
+mod tests {
+  #[test]
+  fn parse_request() {
+    let req = super::parse_request("GET / HTTP/1.1").unwrap();
+
+    assert_eq!(req.method().as_str(), "GET");
+    assert_eq!(req.uri().path(), "/");
+  }
+}
