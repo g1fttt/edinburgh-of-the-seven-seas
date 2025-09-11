@@ -46,6 +46,11 @@ impl Server {
 
     let n = reader.read(&mut buf)?;
 
+    // Connection closed
+    if n == 0 {
+      return Ok(());
+    }
+
     let string = str::from_utf8(&buf[..n]).unwrap();
     let request = match parse_request(string) {
       Ok(req) => req,
