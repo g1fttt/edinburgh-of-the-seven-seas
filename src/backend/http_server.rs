@@ -109,7 +109,7 @@ fn create_response(request: http::Request<()>) -> io::Result<HttpResponse> {
     })
   });
 
-  let dist_path = Path::new("dist");
+  let dist_path = Path::new("static");
 
   let mut content_path = dist_path.join(content_path);
   let mut status = StatusCode::OK;
