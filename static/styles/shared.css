@@ -1,4 +1,11 @@
+:root {
+  --global-transition-time: 350ms;
+  --global-blur: blur(5px);
+  --global-border-radius: 10px;
+  --global-box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+  --global-text-color: #E0E1DD;
+}
+
 body {
-  background-color: #000000;
   margin: 0px;
 }

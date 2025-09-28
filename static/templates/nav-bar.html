@@ -8,9 +8,10 @@
     margin: 0px;
     padding: 0px;
     position: fixed;
+    z-index: 1000;
     top: 0px;
     background-color: rgba(65, 90, 119, 0.5);
-    backdrop-filter: blur(10px);
+    backdrop-filter: var(--global-blur);
   }
 
   .nav-bar>li:first-of-type {
@@ -30,7 +31,7 @@
     font-variant: small-caps;
     margin: 0px;
     padding-top: 10px;
-    color: #E0E1DD;
+    color: var(--global-text-color);
   }
 
   .nav-bar-subtitle {
@@ -39,9 +40,10 @@
     font-weight: 400;
     align-self: flex-end;
     text-align: right;
+    text-transform: capitalize;
     margin: 0px;
     padding-bottom: 10px;
-    color: #E0E1DD;
+    color: var(--global-text-color);
   }
 
   .nav-bar-elem {
@@ -49,16 +51,16 @@
     font-family: 'Roboto';
     font-size: 24px;
     text-decoration: none;
-    transition: 350ms;
+    transition: var(--global-transition-time);
     padding-left: 32px;
-    color: #E0E1DD;
+    color: var(--global-text-color);
   }
 
   .nav-bar-elem:hover {
-    color: #1B263B;
+    font-size: 28px;
   }
 
-  .hero {
+  .logo {
     padding-right: 20.91px;
     padding-left: 40px;
   }
@@ -71,21 +73,21 @@
 
 <nav>
   <ul class="nav-bar">
-    <a href="/index.html">
-      <img src="images/logo.png" width="68.09" height="76" class="hero">
+    <a href="index.html">
+      <img src="images/logo.png" width="68.091" height="76" class="logo">
     </a>
     <div>
       <h1 class="nav-bar-title">Edinburgh of the Seven Seas</h1>
       <h2 class="nav-bar-subtitle">Tourist Webpage</h2>
     </div>
     <li>
-      <a href="/index.html" class="nav-bar-elem">About the State</a>
+      <a href="404.html" class="nav-bar-elem">About the State</a>
     </li>
     <li>
-      <a href="/index.html" class="nav-bar-elem">Things to Do</a>
+      <a href="404.html" class="nav-bar-elem">Things to Do</a>
     </li>
     <li>
-      <a href="/index.html" class="nav-bar-elem">Food & Drinks</a>
+      <a href="404.html" class="nav-bar-elem">Food & Drinks</a>
     </li>
   </ul>
 </nav>
