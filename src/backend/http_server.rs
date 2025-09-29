@@ -1,6 +1,6 @@
 use super::thread_pool::Pool;
 
-use http::header::{CONTENT_LENGTH, CONTENT_TYPE};
+use http::header::{CACHE_CONTROL, CONTENT_LENGTH, CONTENT_TYPE};
 use http::{HeaderValue, StatusCode, request, response};
 
 use format_bytes::write_bytes;
@@ -99,12 +99,12 @@ fn create_response(request: http::Request<()>) -> io::Result<HttpResponse> {
   let extension = content_path.split_once('.').map(|(_, ext)| ext);
   let content_type = extension.and_then(|ext| {
     Some(match ext {
-      "html" => "text/html",
-      "css" => "text/css",
-      "js" => "application/javascript",
-      "png" => "image/png",
-      "jpg" => "image/jpeg",
-      "ico" => "image/x-icon",
+      "html" => ContentType::Html,
+      "css" => ContentType::Css,
+      "js" => ContentType::Js,
+      "png" => ContentType::Png,
+      "jpg" => ContentType::Jpg,
+      "ico" => ContentType::Ico,
       _ => return None,
     })
   });
@@ -126,10 +126,16 @@ fn create_response(request: http::Request<()>) -> io::Result<HttpResponse> {
   let headers = response.headers_mut().unwrap();
   headers.insert(CONTENT_LENGTH, content_bytes.len().into());
 
-  // If path was provided without extension,
-  // then leaving the "guess" job to a web-browser.
+  // If the path was provided with unknown extension (or without extension at all),
+  // then we're leaving the "guess" job to a web-browser.
   if let Some(ty) = content_type {
-    headers.insert(CONTENT_TYPE, HeaderValue::from_static(ty));
+    let content_type = HeaderValue::from_static(ty.as_str());
+
+    headers.insert(CONTENT_TYPE, content_type);
+
+    if matches!(ty, ContentType::Png | ContentType::Jpg | ContentType::Ico) {
+      headers.insert(CACHE_CONTROL, HeaderValue::from_static("max-age=60"));
+    }
   }
 
   Ok(response.body(content_bytes).unwrap())
@@ -159,6 +165,29 @@ fn format_response_as_bytes(response: HttpResponse) -> io::Result<Vec<u8>> {
   write_bytes!(&mut buf, b"\r\n{}", response.body())?;
 
   Ok(buf)
+}
+
+#[derive(Clone, Copy)]
+enum ContentType {
+  Html,
+  Css,
+  Js,
+  Png,
+  Jpg,
+  Ico,
+}
+
+impl ContentType {
+  fn as_str(self) -> &'static str {
+    match self {
+      ContentType::Html => "text/html",
+      ContentType::Css => "text/css",
+      ContentType::Js => "application/javascript",
+      ContentType::Png => "image/png",
+      ContentType::Jpg => "image/jpeg",
+      ContentType::Ico => "image/x-icon",
+    }
+  }
 }
 
 #[cfg(test)]
