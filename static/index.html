@@ -5,16 +5,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed|Roboto&display=swap" rel="stylesheet">
-
-  <link rel="stylesheet" href="styles/shared.css">
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed|Roboto&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
     rel="stylesheet">
 
-  <link href="styles/shared.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles/shared.css">
 
   <script src="scripts/nav-bar.js" type="text/javascript"></script>
 
@@ -26,13 +24,13 @@
     background-image: url("images/hero.png");
     background-size: cover;
     background-attachment: fixed;
-    padding-top: 84px;
+    overflow: hidden;
   }
 
-  .discover-section {
+  #discover-section {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: center;
     background-color: rgba(65, 90, 119, 0.5);
     backdrop-filter: var(--global-blur);
     border-radius: var(--global-border-radius);
@@ -40,9 +38,10 @@
     margin-left: 40px;
     box-shadow: var(--global-box-shadow);
     width: 764px;
+    height: 175px;
   }
 
-  .discover-section h1 {
+  #discover-section h1 {
     font-family: 'Roboto';
     font-size: 96px;
     font-weight: bold;
@@ -52,7 +51,7 @@
     color: var(--global-text-color);
   }
 
-  .discover-section h2 {
+  #discover-section h2 {
     font-family: 'Roboto';
     font-size: 48px;
     font-weight: normal;
@@ -62,7 +61,7 @@
     color: var(--global-text-color);
   }
 
-  .click-to-action {
+  #click-to-action {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -81,7 +80,7 @@
   }
 
   .click-to-action:hover {
-    transform: scale(1.05);
+    transform: var(--global-hover-scale);
     box-shadow: var(--global-box-shadow);
   }
 </style>
@@ -92,11 +91,11 @@
   </header>
 
   <main>
-    <div class="discover-section">
+    <div id="discover-section">
       <h1>Discover</h1>
       <h2>The World's Remotest Settlement</h2>
     </div>
-    <a href="404.html" class="click-to-action">Start the Journey</a>
+    <a href="about-the-state.html" id="click-to-action">Start the Journey</a>
   </main>
 
   <footer>
