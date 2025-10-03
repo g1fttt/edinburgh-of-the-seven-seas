@@ -1,10 +1,10 @@
 <style>
-  .nav-bar {
+  #nav-bar {
     display: flex;
     list-style-type: none;
     align-items: center;
     width: 100%;
-    height: 84px;
+    height: var(--global-nav-bar-height);
     margin: 0px;
     padding: 0px;
     position: fixed;
@@ -12,17 +12,18 @@
     top: 0px;
     background-color: rgba(65, 90, 119, 0.5);
     backdrop-filter: var(--global-blur);
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.25);
   }
 
-  .nav-bar>li:first-of-type {
+  #nav-bar>li:first-of-type {
     margin-left: auto;
   }
 
-  .nav-bar>li:last-of-type {
+  #nav-bar>li:last-of-type {
     margin-right: 40px;
   }
 
-  .nav-bar-title {
+  #nav-bar h1 {
     letter-spacing: 5%;
     align-self: flex-start;
     font-family: 'Roboto Condensed';
@@ -34,7 +35,7 @@
     color: var(--global-text-color);
   }
 
-  .nav-bar-subtitle {
+  #nav-bar h3 {
     font-family: 'Roboto Condensed';
     font-size: 18px;
     font-weight: 400;
@@ -47,9 +48,10 @@
   }
 
   .nav-bar-elem {
+    display: inline-block;
     align-self: flex-end;
     font-family: 'Roboto';
-    font-size: 24px;
+    font-size: 20px;
     text-decoration: none;
     transition: var(--global-transition-time);
     padding-left: 32px;
@@ -57,37 +59,41 @@
   }
 
   .nav-bar-elem:hover {
-    font-size: 28px;
+    transform: var(--global-hover-scale);
   }
 
-  .logo {
+  .nav-bar-elem.active {
+    text-decoration: underline;
+    text-decoration-thickness: 3px;
+    text-underline-offset: 10px;
+  }
+
+  #logo {
     padding-right: 20.91px;
     padding-left: 40px;
   }
-
-  /* NOTE: unused */
-  /* .nav-bar-elem.active {
-    text-decoration: overline;
-  } */
 </style>
 
 <nav>
-  <ul class="nav-bar">
+  <ul id="nav-bar">
     <a href="index.html">
-      <img src="images/logo.png" width="68.091" height="76" class="logo">
+      <img src="images/logo.png" width="68.091" height="76" id="logo">
     </a>
     <div>
-      <h1 class="nav-bar-title">Edinburgh of the Seven Seas</h1>
-      <h2 class="nav-bar-subtitle">Tourist Webpage</h2>
+      <h1>Edinburgh of the Seven Seas</h1>
+      <h3>Tourist Webpage</h3>
     </div>
     <li>
       <a href="about-the-state.html" class="nav-bar-elem">About the State</a>
     </li>
     <li>
-      <a href="404.html" class="nav-bar-elem">Things to Do</a>
+      <a href="things-to-do.html" class="nav-bar-elem">Things to Do</a>
     </li>
     <li>
-      <a href="404.html" class="nav-bar-elem">Food & Drinks</a>
+      <a href="food-and-drinks.html" class="nav-bar-elem">Food & Drinks</a>
+    </li>
+    <li>
+      <a href="fun-facts.html" class="nav-bar-elem">Fun Facts</a>
     </li>
   </ul>
 </nav>

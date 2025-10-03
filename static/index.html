@@ -21,27 +21,34 @@
 
 <style>
   body {
+    padding-top: 0;
+  }
+
+  #hero {
+    display: flex;
+    flex-direction: column;
     background-image: url("images/hero.png");
     background-size: cover;
     background-attachment: fixed;
     overflow: hidden;
+    min-height: 100vh;
   }
 
-  #discover-section {
+  #slogan-block {
     display: flex;
     flex-direction: column;
     justify-content: center;
     background-color: rgba(65, 90, 119, 0.5);
     backdrop-filter: var(--global-blur);
     border-radius: var(--global-border-radius);
-    margin-top: 200px;
+    margin-top: calc(200px + var(--global-nav-bar-height));
     margin-left: 40px;
     box-shadow: var(--global-box-shadow);
     width: 764px;
     height: 175px;
   }
 
-  #discover-section h1 {
+  #slogan-block h1 {
     font-family: 'Roboto';
     font-size: 96px;
     font-weight: bold;
@@ -51,7 +58,7 @@
     color: var(--global-text-color);
   }
 
-  #discover-section h2 {
+  #slogan-block h2 {
     font-family: 'Roboto';
     font-size: 48px;
     font-weight: normal;
@@ -61,27 +68,42 @@
     color: var(--global-text-color);
   }
 
+  #discover-section {
+    height: 100vh;
+    padding-top: var(--global-nav-bar-height);
+  }
+
   #click-to-action {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 362px;
-    height: 90px;
-    border-radius: var(--global-border-radius);
-    font-family: 'Roboto';
-    font-size: 36px;
-    font-weight: normal;
-    text-decoration: none;
-    margin-top: 16px;
-    margin-left: 442px;
+    align-self: center;
+    width: 64px;
+    height: 64px;
+    border-radius: 25px;
+    margin-top: auto;
+    margin-bottom: 20px;
     transition: var(--global-transition-time);
-    background-color: #1B263B;
-    color: var(--global-text-color);
+    animation: move-around 650ms ease-in infinite alternate;
+    background-color: #E0E1DD;
   }
 
   #click-to-action:hover {
-    transform: var(--global-hover-scale);
     box-shadow: var(--global-box-shadow);
+  }
+
+  #click-to-action:active {
+    filter: brightness(0.6);
+  }
+
+  @keyframes move-around {
+    from {
+      transform: translateY(0);
+    }
+
+    to {
+      transform: translateY(10px);
+    }
   }
 </style>
 
@@ -91,11 +113,23 @@
   </header>
 
   <main>
-    <div id="discover-section">
-      <h1>Discover</h1>
-      <h2>The World's Remotest Settlement</h2>
+    <div id="hero">
+      <div id="slogan-block">
+        <h1>Discover</h1>
+        <h2>The World's Remotest Settlement</h2>
+      </div>
+
+      <a href="#discover-section" id="click-to-action">
+        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="34" viewBox="0 0 30 34" fill="none">
+          <path
+            d="M13.5858 33.4142C14.3668 34.1953 15.6332 34.1953 16.4142 33.4142L29.1421 20.6863C29.9232 19.9052 29.9232 18.6389 29.1421 17.8579C28.3611 17.0768 27.0948 17.0768 26.3137 17.8579L15 29.1716L3.68629 17.8579C2.90524 17.0768 1.63891 17.0768 0.857864 17.8579C0.0768156 18.6389 0.0768156 19.9052 0.857864 20.6863L13.5858 33.4142ZM15 0L13 0L13 32H15H17V0L15 0Z"
+            fill="#1B263B" />
+        </svg>
+      </a>
     </div>
-    <a href="about-the-state.html" id="click-to-action">Start the Journey</a>
+
+    <div id="discover-section">
+    </div>
   </main>
 
   <footer>

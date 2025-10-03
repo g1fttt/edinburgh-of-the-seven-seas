@@ -4,13 +4,13 @@ class NavBar extends HTMLElement {
   constructor() {
     super()
 
-    this.template = document.createElement('template')
+    this.template = document.createElement("template")
   }
 
   async connectedCallback() {
-    const shadowRoot = this.attachShadow({ mode: 'closed' })
+    const shadowRoot = this.attachShadow({ mode: "closed" })
 
-    const htmlResp = await fetch('templates/nav-bar.html')
+    const htmlResp = await fetch("templates/nav-bar.html")
     this.template.innerHTML = await htmlResp.text()
 
     shadowRoot.appendChild(this.template.content)
@@ -19,15 +19,19 @@ class NavBar extends HTMLElement {
   }
 
   markIfActive(link) {
-    const href = link.getAttribute("href")
+    // Normalize the href attribute if one was providen without the slash
+    let href = link.getAttribute("href")
+    if (!href.startsWith("/")) {
+      href = "/" + href
+    }
 
-    const isCurrentLinkActive = href === window.location.pathname
+    const isCurrentPathActive = href === window.location.pathname
     const isRoot = window.location.pathname === "/"
 
-    if (isCurrentLinkActive || (isRoot && href === "/index.html")) {
+    if (isCurrentPathActive || (isRoot && href === "/index.html")) {
       link.classList.add("active")
     }
   }
 }
 
-customElements.define('nav-bar', NavBar)
+customElements.define("nav-bar", NavBar)
