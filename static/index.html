@@ -30,6 +30,7 @@
     background-image: url("images/hero.png");
     background-size: cover;
     background-attachment: fixed;
+    background-position: 0;
     overflow: hidden;
     min-height: 100vh;
   }
@@ -68,11 +69,6 @@
     color: var(--global-text-color);
   }
 
-  #discover-section {
-    height: 100vh;
-    padding-top: var(--global-nav-bar-height);
-  }
-
   #click-to-action {
     display: flex;
     justify-content: center;
@@ -93,7 +89,7 @@
   }
 
   #click-to-action:active {
-    filter: brightness(0.6);
+    filter: var(--global-active-brightness);
   }
 
   @keyframes move-around {
@@ -104,6 +100,30 @@
     to {
       transform: translateY(10px);
     }
+  }
+
+  #discover-section {
+    min-height: 100vh;
+    padding-top: var(--global-nav-bar-height);
+    background: var(--global-background-gradient);
+    background-size: cover;
+  }
+
+  #discover-section #hint {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-right: 177px;
+    line-height: 0;
+    opacity: 0.3;
+  }
+
+  #discover-section #hint h3 {
+    font-family: "Roboto";
+    font-size: 24px;
+    font-weight: 400;
+    margin-right: 8px;
+    color: var(--global-text-color);
   }
 </style>
 
@@ -128,7 +148,31 @@
       </a>
     </div>
 
+    <!-- Don't let the user scroll down a bit a see what he's not supposed to see -->
+    <script>
+      var lastPageYOffset = 0;
+
+      window.addEventListener("scroll", function () {
+        const currentPageYOffset = window.pageYOffset
+
+        if (currentPageYOffset > lastPageYOffset /* Scrolled down */) {
+          const clickToAction = document.getElementById("click-to-action")
+          clickToAction.click()
+        }
+
+        lastPageYOffset = currentPageYOffset
+      }, false)
+    </script>
+
     <div id="discover-section">
+      <div id="hint">
+        <h3>Navigate using navigation bar</h3>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="18" viewBox="0 0 16 18" fill="none">
+          <path
+            d="M8.70711 0.292893C8.31658 -0.0976311 7.68342 -0.0976311 7.29289 0.292893L0.928932 6.65685C0.538408 7.04738 0.538408 7.68054 0.928932 8.07107C1.31946 8.46159 1.95262 8.46159 2.34315 8.07107L8 2.41421L13.6569 8.07107C14.0474 8.46159 14.6805 8.46159 15.0711 8.07107C15.4616 7.68054 15.4616 7.04738 15.0711 6.65685L8.70711 0.292893ZM8 18H9L9 1H8H7L7 18H8Z"
+            fill="#E0E1DD" />
+        </svg>
+      </div>
     </div>
   </main>
 
