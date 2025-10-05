@@ -4,7 +4,7 @@
   --global-border-radius: 10px;
   --global-box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
   --global-text-color: #E0E1DD;
-  --global-hover-scale: scale(1.05);
+  --global-hover-scale: 1.05;
   --global-nav-bar-height: 84px;
   --global-background-gradient: linear-gradient(26deg, #0D1B2A 0%, #1B263B 100%);
   --global-active-brightness: brightness(0.6);

@@ -24,7 +24,7 @@
     padding-top: 0;
   }
 
-  #hero {
+  #hero-section {
     display: flex;
     flex-direction: column;
     background-image: url("images/hero.png");
@@ -85,6 +85,7 @@
   }
 
   #click-to-action:hover {
+    scale: var(--global-hover-scale);
     box-shadow: var(--global-box-shadow);
   }
 
@@ -133,7 +134,7 @@
   </header>
 
   <main>
-    <div id="hero">
+    <div id="hero-section">
       <div id="slogan-block">
         <h1>Discover</h1>
         <h2>The World's Remotest Settlement</h2>
@@ -148,16 +149,23 @@
       </a>
     </div>
 
-    <!-- Don't let the user scroll down a bit a see what he's not supposed to see -->
     <script>
       var lastPageYOffset = 0;
 
       window.addEventListener("scroll", function () {
         const currentPageYOffset = window.pageYOffset
 
-        if (currentPageYOffset > lastPageYOffset /* Scrolled down */) {
-          const clickToAction = document.getElementById("click-to-action")
-          clickToAction.click()
+        const isScrolledDown = currentPageYOffset > lastPageYOffset;
+        const isScrolledUp = currentPageYOffset < lastPageYOffset;
+
+        const goToSection = (section) => document
+          .getElementById(section)
+          .scrollIntoView()
+
+        if (isScrolledDown) {
+          goToSection("discover-section")
+        } else if (isScrolledUp) {
+          goToSection("hero-section")
         }
 
         lastPageYOffset = currentPageYOffset
