@@ -7,7 +7,7 @@ use format_bytes::write_bytes;
 use thiserror::Error;
 
 use std::fs;
-use std::io::{self, BufReader, BufWriter, Read, Write};
+use std::io::{self, BufReader, BufWriter, ErrorKind, Read, Write};
 use std::net::{TcpListener, TcpStream, ToSocketAddrs};
 use std::path::Path;
 
@@ -44,12 +44,12 @@ impl Server {
 
     let mut buf = [0; 8192];
 
-    let n = reader.read(&mut buf)?;
-
-    // Connection closed
-    if n == 0 {
-      return Ok(());
-    }
+    let n = match reader.read(&mut buf) {
+      Ok(0) => return Ok(()),
+      Ok(n) => n,
+      Err(err) if err.kind() == ErrorKind::Interrupted => return Ok(()),
+      Err(err) => return Err(err),
+    };
 
     let string = str::from_utf8(&buf[..n]).unwrap();
     let request = match parse_request(string) {
@@ -60,7 +60,11 @@ impl Server {
     let response = create_response(request)?;
     let response_bytes = format_response_as_bytes(response)?;
 
-    writer.write_all(&response_bytes)
+    match writer.write_all(&response_bytes) {
+      Ok(()) => Ok(()),
+      Err(err) if err.kind() == ErrorKind::Interrupted => Ok(()),
+      Err(err) => Err(err),
+    }
   }
 }
 
