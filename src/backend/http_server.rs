@@ -30,7 +30,9 @@ impl Server {
       let stream = stream?;
 
       self.thread_pool.execute(|| {
-        if let Err(err) = Self::handle_conn(stream) {
+        if let Err(err) = Self::handle_conn(stream)
+          && err.kind() != ErrorKind::ConnectionReset
+        {
           eprintln!("Failed to handle connection: {err}");
         }
       });
@@ -44,12 +46,11 @@ impl Server {
 
     let mut buf = [0; 8192];
 
-    let n = match reader.read(&mut buf) {
-      Ok(0) => return Ok(()),
-      Ok(n) => n,
-      Err(err) if err.kind() == ErrorKind::Interrupted => return Ok(()),
-      Err(err) => return Err(err),
-    };
+    let n = reader.read(&mut buf)?;
+
+    if n == 0 {
+      return Ok(());
+    }
 
     let string = str::from_utf8(&buf[..n]).unwrap();
     let request = match parse_request(string) {
@@ -60,11 +61,7 @@ impl Server {
     let response = create_response(request)?;
     let response_bytes = format_response_as_bytes(response)?;
 
-    match writer.write_all(&response_bytes) {
-      Ok(()) => Ok(()),
-      Err(err) if err.kind() == ErrorKind::Interrupted => Ok(()),
-      Err(err) => Err(err),
-    }
+    writer.write_all(&response_bytes)
   }
 }
 
