@@ -1,19 +1,16 @@
 class NavBar extends HTMLElement {
-  template;
-
   constructor() {
     super()
-
-    this.template = document.createElement("template")
   }
 
   async connectedCallback() {
-    const shadowRoot = this.attachShadow({ mode: "closed" })
-
     const htmlResp = await fetch("templates/nav-bar.html")
-    this.template.innerHTML = await htmlResp.text()
 
-    shadowRoot.appendChild(this.template.content)
+    let template = document.createElement("template")
+    template.innerHTML = await htmlResp.text()
+
+    const shadowRoot = this.attachShadow({ mode: "closed" })
+    shadowRoot.appendChild(template.content)
     shadowRoot.querySelectorAll(".nav-bar-elem")
       .forEach(link => this.markIfActive(link))
   }
