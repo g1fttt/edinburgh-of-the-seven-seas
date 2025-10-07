@@ -1,0 +1,73 @@
+#social-proof-block {
+  display: flex;
+
+  margin-top: 50px;
+
+  justify-content: center;
+
+  gap: 20px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+
+  height: 344px;
+
+  --width: 270px;
+  min-width: var(--width);
+  max-width: var(--width);
+
+  border-radius: var(--global-border-radius);
+  box-shadow: var(--global-fill-image-box-shadow);
+}
+
+.card>.name {
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-bottom: 0;
+
+  font-family: "Roboto";
+  font-weight: 500;
+  font-variant: small-caps;
+
+  opacity: 80%;
+}
+
+.card>.number {
+  margin-top: 140px;
+  margin-bottom: 0;
+
+  align-self: center;
+
+  font-weight: 700;
+}
+
+.card>.description {
+  margin-top: 30px;
+
+  width: 230px;
+
+  align-self: center;
+  text-align: center;
+
+  font-weight: 300;
+
+  opacity: 80%;
+}
+
+#things-to-do.card {
+  background: linear-gradient(212deg, #415A77 0%, #1B263B 100%);
+}
+
+#food-and-drinks.card {
+  background: linear-gradient(212deg, #1B263B 0%, #415A77 100%);
+}
+
+#guest-experience.card {
+  background: linear-gradient(315deg, #1B263B 0%, #415A77 100%);
+}
+
+#fun-facts.card {
+  background: linear-gradient(315deg, #415A77 0%, #1B263B 100%);
+}

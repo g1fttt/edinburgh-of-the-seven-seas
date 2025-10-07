@@ -37,20 +37,32 @@ body {
 
 h4 {
   font-size: var(--h4-font-size);
+  font-weight: normal;
+
+  color: var(--global-text-color);
 }
 
 h3,
 p {
   font-family: "Inter";
   font-size: var(--h3-and-p-font-size);
+  font-weight: normal;
+
+  color: var(--global-text-color);
 }
 
 h2 {
   font-family: "Roboto";
   font-size: var(--h2-font-size);
+  font-weight: normal;
+
+  color: var(--global-text-color);
 }
 
 h1 {
   font-family: "Roboto";
   font-size: var(--h1-font-size);
+  font-weight: normal;
+
+  color: var(--global-text-color);
 }
