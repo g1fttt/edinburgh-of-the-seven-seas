@@ -1,4 +1,12 @@
 :root {
+  --base-font-size: 20px;
+  --font-size-mod: 1.333;
+
+  --h4-font-size: calc(var(--base-font-size) / var(--font-size-mod));
+  --h3-and-p-font-size: var(--base-font-size);
+  --h2-font-size: calc(var(--h3-and-p-font-size) * var(--font-size-mod));
+  --h1-font-size: calc(var(--h2-font-size) * var(--font-size-mod));
+
   --global-transition-time: 350ms;
   --global-blur: blur(5px);
   --global-border-radius: 10px;
@@ -16,7 +24,7 @@ body {
 
   height: 100%;
 
-  background: linear-gradient(26deg, #0D1B2A 0%, #1B263B 100%);
+  background: var(--global-background-gradient);
   background-size: cover;
   background-attachment: fixed;
 
@@ -25,4 +33,24 @@ body {
 
 body {
   padding-top: 84px;
+}
+
+h4 {
+  font-size: var(--h4-font-size);
+}
+
+h3,
+p {
+  font-family: "Inter";
+  font-size: var(--h3-and-p-font-size);
+}
+
+h2 {
+  font-family: "Roboto";
+  font-size: var(--h2-font-size);
+}
+
+h1 {
+  font-family: "Roboto";
+  font-size: var(--h1-font-size);
 }

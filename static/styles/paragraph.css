@@ -8,13 +8,11 @@
   padding-bottom: 25px;
 }
 
-.paragraph h1 {
+.paragraph h2 {
   margin-top: 0;
   margin-bottom: 0;
   margin-left: 50px;
 
-  font-family: "Roboto";
-  font-size: 36px;
   font-weight: 500;
 
   color: var(--global-text-color);
@@ -25,9 +23,7 @@
   margin-left: 50px;
   margin-bottom: 0;
 
-  font-family: "Inter";
   font-weight: 300;
-  font-size: 20px;
 
   color: var(--global-text-color);
 }

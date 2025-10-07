@@ -11,6 +11,9 @@
   <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed|Roboto&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
     rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fontdiner+Swanky&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+    rel="stylesheet">
 
   <link rel="stylesheet" href="styles/base.css">
 
@@ -64,7 +67,6 @@
     margin-bottom: 0;
     margin-left: var(--left-margin);
 
-    font-family: 'Roboto';
     font-size: 96px;
     font-weight: bold;
 
@@ -75,7 +77,7 @@
     margin-top: 10px;
     margin-left: var(--left-margin);
 
-    font-family: 'Roboto';
+    font-family: "Roboto";
     font-size: 48px;
     font-weight: normal;
 
@@ -142,18 +144,10 @@
 
     align-items: center;
 
-    line-height: 0;
+    font-weight: 300;
 
     opacity: 30%;
-  }
-
-  #discover-section>#hint>h3 {
-    margin-right: 8px;
-
-    font-family: "Roboto";
-    font-size: 24px;
-    font-weight: 400;
-
+    line-height: 0;
     color: var(--global-text-color);
   }
 
@@ -187,7 +181,6 @@
     z-index: 1;
 
     font-family: "Roboto";
-    font-size: 20px;
     font-weight: 500;
     font-variant: small-caps;
 
@@ -259,14 +252,7 @@
     </script>
 
     <div id="discover-section">
-      <div id="hint">
-        <h3>Navigate using navigation bar</h3>
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="18" viewBox="0 0 16 18" fill="none">
-          <path
-            d="M8.70711 0.292893C8.31658 -0.0976311 7.68342 -0.0976311 7.29289 0.292893L0.928932 6.65685C0.538408 7.04738 0.538408 7.68054 0.928932 8.07107C1.31946 8.46159 1.95262 8.46159 2.34315 8.07107L8 2.41421L13.6569 8.07107C14.0474 8.46159 14.6805 8.46159 15.0711 8.07107C15.4616 7.68054 15.4616 7.04738 15.0711 6.65685L8.70711 0.292893ZM8 18H9L9 1H8H7L7 18H8Z"
-            fill="#E0E1DD" />
-        </svg>
-      </div>
+      <h3 id="hint">Navigate using navigation bar</h3>
 
       <div id="cta-block">
         <a href="things-to-do.html" class="cta-image">

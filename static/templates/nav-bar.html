@@ -2,17 +2,21 @@
   #nav-bar {
     display: flex;
     list-style-type: none;
-    align-items: center;
+
+    margin: 0;
+    padding: 0;
+
     width: 100%;
     height: var(--global-nav-bar-height);
-    margin: 0px;
-    padding: 0px;
+
+    align-items: center;
     position: fixed;
     z-index: 1000;
-    top: 0px;
-    background-color: rgba(65, 90, 119, 0.5);
+    top: 0;
+
     backdrop-filter: var(--global-blur);
     box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.25);
+    background-color: rgba(65, 90, 119, 0.5);
   }
 
   #nav-bar>li:first-of-type {
@@ -23,38 +27,19 @@
     margin-right: 40px;
   }
 
-  #nav-bar h1 {
-    letter-spacing: 5%;
-    align-self: flex-start;
-    font-family: 'Roboto Condensed';
-    font-size: 36px;
-    font-weight: 450;
-    font-variant: small-caps;
-    margin: 0px;
-    padding-top: 10px;
-    color: var(--global-text-color);
-  }
-
-  #nav-bar h3 {
-    font-family: 'Roboto Condensed';
-    font-size: 18px;
-    font-weight: 400;
-    align-self: flex-end;
-    text-align: right;
-    text-transform: capitalize;
-    margin: 0px;
-    padding-bottom: 10px;
-    color: var(--global-text-color);
-  }
-
   .nav-bar-elem {
     display: inline-block;
-    align-self: flex-end;
-    font-family: 'Roboto';
-    font-size: 20px;
-    text-decoration: none;
-    transition: var(--global-transition-time);
+
     padding-left: 32px;
+
+    align-self: flex-end;
+
+    font-family: 'Roboto';
+    font-size: var(--h3-and-p-font-size);
+
+    text-decoration: none;
+
+    transition: var(--global-transition-time);
     color: var(--global-text-color);
   }
 
@@ -72,6 +57,39 @@
     padding-right: 20.91px;
     padding-left: 40px;
   }
+
+  #name {
+    margin: 0;
+  }
+
+  #name>h1 {
+    margin: 0;
+
+    align-self: flex-start;
+
+    font-family: "Roboto Condensed";
+    font-size: var(--h1-font-size);
+    font-weight: 500;
+    font-variant: small-caps;
+
+    letter-spacing: 5%;
+    color: var(--global-text-color);
+  }
+
+  #name>h4 {
+    margin: 0;
+
+    align-self: flex-end;
+
+    text-align: right;
+    text-transform: capitalize;
+
+    font-family: 'Roboto Condensed';
+    font-size: var(--h4-font-size);
+    font-weight: 500;
+
+    color: var(--global-text-color);
+  }
 </style>
 
 <nav>
@@ -79,9 +97,9 @@
     <a href="index.html">
       <img src="images/logo.png" width="68.091" height="76" id="logo">
     </a>
-    <div>
+    <div id="name">
       <h1>Edinburgh of the Seven Seas</h1>
-      <h3>Tourist Webpage</h3>
+      <h4>Tourist Webpage</h3>
     </div>
     <li>
       <a href="about-the-state.html" class="nav-bar-elem">About the State</a>
