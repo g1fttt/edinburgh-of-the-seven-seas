@@ -23,40 +23,6 @@
   <title>About the State</title>
 </head>
 
-<style>
-  #abstract-pattern {
-    display: flex;
-    flex-direction: column;
-
-    width: 100%;
-
-    align-items: flex-end;
-
-    position: fixed;
-    top: 0;
-  }
-
-  #abstract-pattern>img {
-    width: 683px;
-
-    opacity: 10%;
-  }
-
-  #abstract-pattern>img:last-of-type {
-    /* mirror the lower abstract pattern vertically */
-    transform: scaleY(-1);
-  }
-
-  #state-motto {
-    margin-left: 74px;
-    margin-top: 48px;
-
-    font-weight: 500;
-
-    color: var(--global-text-color);
-  }
-</style>
-
 <body>
   <header>
     <nav-bar></nav-bar>
@@ -64,7 +30,7 @@
 
   <main>
     <div>
-      <h1 id="state-motto">Our Faith is Our Strength</h1>
+      <h1 class="motto">Our Faith is Our Strength</h1>
 
       <div class="paragraph">
         <div class="paragraph-cover">
@@ -183,9 +149,9 @@
       </div>
     </div>
 
-    <div id="abstract-pattern">
+    <div class="abstract-pattern">
       <img src="images/abstract-pattern.png">
-      <img src="images/abstract-pattern.png" id="lower-abstract-pattern">
+      <img src="images/abstract-pattern.png">
     </div>
   </main>
 
