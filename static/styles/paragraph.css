@@ -27,7 +27,7 @@
 
   font-weight: 500;
 
-  color: var(--global-text-color);
+  color: var(--color-text);
 }
 
 .paragraph {
@@ -47,7 +47,7 @@
 
   font-weight: 500;
 
-  color: var(--global-text-color);
+  color: var(--color-text);
 }
 
 .paragraph h3 {
@@ -57,7 +57,7 @@
 
   font-weight: 300;
 
-  color: var(--global-text-color);
+  color: var(--color-text);
 }
 
 .paragraph h4 {
@@ -95,8 +95,8 @@
   z-index: 1;
   overflow: hidden;
 
-  border-radius: var(--global-border-radius);
-  box-shadow: var(--global-fill-image-box-shadow);
+  border-radius: var(--border-radius);
+  box-shadow: var(--fill-image-box-shadow);
 }
 
 .paragraph-multicover {

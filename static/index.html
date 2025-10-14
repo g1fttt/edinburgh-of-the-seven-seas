@@ -16,6 +16,7 @@
     rel="stylesheet">
 
   <link rel="stylesheet" href="styles/base.css">
+  <link rel="stylesheet" href="styles/landing.css">
 
   <link rel="stylesheet" href="styles/landing/cta.css">
   <link rel="stylesheet" href="styles/landing/social-proof.css">
@@ -24,121 +25,6 @@
 
   <title>Home</title>
 </head>
-
-<style>
-  body {
-    padding-top: 0;
-  }
-
-  #hero-section {
-    display: flex;
-    flex-direction: column;
-
-    min-height: 100vh;
-
-    background-image: url("images/landing/hero.png");
-    background-size: cover;
-    background-attachment: fixed;
-    background-position: 0;
-
-    overflow: hidden;
-  }
-
-  #slogan-block {
-    --left-margin: 26px;
-
-    display: flex;
-    flex-direction: column;
-
-    margin-top: calc(200px + var(--global-nav-bar-height));
-    margin-left: 40px;
-
-    width: 764px;
-    height: 175px;
-
-    justify-content: center;
-
-    backdrop-filter: var(--global-blur);
-    border-radius: var(--global-border-radius);
-    box-shadow: var(--global-box-shadow);
-
-    background-color: rgba(65, 90, 119, 0.5);
-  }
-
-  #slogan-block>h1 {
-    margin-top: 0;
-    margin-bottom: 0;
-    margin-left: var(--left-margin);
-
-    font-size: 96px;
-    font-weight: bold;
-
-    color: var(--global-text-color);
-  }
-
-  #slogan-block>h2 {
-    margin-top: 10px;
-    margin-left: var(--left-margin);
-
-    font-family: "Roboto";
-    font-size: 48px;
-    font-weight: normal;
-
-    line-height: 0;
-
-    color: var(--global-text-color);
-  }
-
-  #click-to-action {
-    display: flex;
-    justify-content: center;
-
-    margin-top: auto;
-    margin-bottom: 20px;
-
-    --size: 64px;
-    width: var(--size);
-    height: var(--size);
-
-    align-items: center;
-    align-self: center;
-
-    transition: var(--global-transition-time);
-    animation: move-around 650ms ease-in infinite alternate;
-
-    border-radius: 25px;
-
-    background-color: #E0E1DD;
-  }
-
-  #click-to-action:hover {
-    scale: var(--global-hover-scale);
-
-    box-shadow: var(--global-box-shadow);
-  }
-
-  #click-to-action:active {
-    filter: brightness(0.6);
-  }
-
-  @keyframes move-around {
-    from {
-      transform: translateY(0);
-    }
-
-    to {
-      transform: translateY(10px);
-    }
-  }
-
-  #discover-section {
-    padding-top: var(--global-nav-bar-height);
-
-    min-height: 100vh;
-
-    background: var(--global-background-gradient);
-  }
-</style>
 
 <body>
   <header>
@@ -178,8 +64,7 @@
       <a href="#discover-section" id="click-to-action">
         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="34" viewBox="0 0 30 34" fill="none">
           <path
-            d="M13.5858 33.4142C14.3668 34.1953 15.6332 34.1953 16.4142 33.4142L29.1421 20.6863C29.9232 19.9052 29.9232 18.6389 29.1421 17.8579C28.3611 17.0768 27.0948 17.0768 26.3137 17.8579L15 29.1716L3.68629 17.8579C2.90524 17.0768 1.63891 17.0768 0.857864 17.8579C0.0768156 18.6389 0.0768156 19.9052 0.857864 20.6863L13.5858 33.4142ZM15 0L13 0L13 32H15H17V0L15 0Z"
-            fill="#1B263B" />
+            d="M13.5858 33.4142C14.3668 34.1953 15.6332 34.1953 16.4142 33.4142L29.1421 20.6863C29.9232 19.9052 29.9232 18.6389 29.1421 17.8579C28.3611 17.0768 27.0948 17.0768 26.3137 17.8579L15 29.1716L3.68629 17.8579C2.90524 17.0768 1.63891 17.0768 0.857864 17.8579C0.0768156 18.6389 0.0768156 19.9052 0.857864 20.6863L13.5858 33.4142ZM15 0L13 0L13 32H15H17V0L15 0Z" />
         </svg>
       </a>
     </div>

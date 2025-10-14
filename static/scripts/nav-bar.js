@@ -5,9 +5,13 @@ class NavBar extends HTMLElement {
 
   async connectedCallback() {
     const htmlResp = await fetch("templates/nav-bar.html")
+    const cssResp = await fetch("styles/nav-bar.css")
 
     let template = document.createElement("template")
-    template.innerHTML = await htmlResp.text()
+    template.innerHTML = `
+      <style>${await cssResp.text()}</style>
+      ${await htmlResp.text()}
+    `
 
     const shadowRoot = this.attachShadow({ mode: "closed" })
     shadowRoot.appendChild(template.content)

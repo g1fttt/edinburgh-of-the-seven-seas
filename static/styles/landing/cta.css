@@ -17,8 +17,8 @@
 
   overflow: hidden;
 
-  border-radius: var(--global-border-radius);
-  box-shadow: var(--global-fill-image-box-shadow);
+  border-radius: var(--border-radius);
+  box-shadow: var(--fill-image-box-shadow);
 }
 
 #cta-block>.cta-image>h3 {
@@ -32,8 +32,8 @@
   font-weight: 500;
   font-variant: small-caps;
 
-  transition: var(--global-transition-time);
-  color: var(--global-text-color);
+  transition: var(--transition-time);
+  color: var(--color-text);
   opacity: 80%;
 }
 
@@ -43,7 +43,7 @@
 
   object-fit: cover;
 
-  transition: var(--global-transition-time);
+  transition: var(--transition-time);
   filter: brightness(0.5);
 }
 
