@@ -18,8 +18,13 @@
   min-width: var(--width);
   max-width: var(--width);
 
+  transition: var(--global-transition-time);
   border-radius: var(--global-border-radius);
   box-shadow: var(--global-fill-image-box-shadow);
+}
+
+.card:hover {
+  scale: var(--global-hover-scale);
 }
 
 .card>.name {
