@@ -33,16 +33,30 @@
 
   <main>
     <script>
+      // Implements magnet-like behavior. Allowing to jump between sections
+      // when the user crosses the Discover-section absolute horizontal position.
+      //
+      // At the same time also giving an ability to see the lower page visuality
+      // (additional content, footer etc.)
       window.addEventListener("wheel", function (event) {
-        const isScrolledDown = event.deltaY > 0
-
-        const goToSection = (section) => document
-          .getElementById(section)
+        const goToSection = (sectionId) => document
+          .getElementById(sectionId)
           .scrollIntoView()
 
-        if (isScrolledDown) {
+        const isScrolledDown = event.deltaY > 0
+        const isScrolledUp = event.deltaY < 0
+
+        const discoverSectionRect = document
+          .getElementById("discover-section")
+          .getBoundingClientRect()
+        const discoverSectionAbsPosY = discoverSectionRect.top + window.scrollY
+
+        const isAtTheHeroSection = window.scrollY < discoverSectionAbsPosY
+        const isAtTheDiscoverSection = window.scrollY <= discoverSectionAbsPosY
+
+        if (isScrolledDown && isAtTheHeroSection) {
           goToSection("discover-section")
-        } else {
+        } else if (isScrolledUp && isAtTheDiscoverSection) {
           goToSection("hero-section")
         }
       }, false)
