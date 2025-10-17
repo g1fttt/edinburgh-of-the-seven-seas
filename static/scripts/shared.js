@@ -6,8 +6,8 @@ export class CustomElement extends HTMLElement {
   async init(templateFilename, templateStyleFilename) {
     const htmlResp = await fetch(`templates/${templateFilename}`)
 
-    const baseCssResp = await fetch("/styles/base.css")
-    const cssResp = await fetch(`/styles/${templateStyleFilename}`)
+    const baseCssResp = await fetch("styles/base.css")
+    const cssResp = await fetch(`styles/${templateStyleFilename}`)
 
     let template = document.createElement("template")
     template.innerHTML = `

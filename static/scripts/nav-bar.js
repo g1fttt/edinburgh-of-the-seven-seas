@@ -6,7 +6,7 @@ class NavBar extends CustomElement {
   }
 
   async connectedCallback() {
-    const shadowRoot = this.init("nav-bar.html", "nav-bar.css")
+    const shadowRoot = await this.init("nav-bar.html", "nav-bar.css")
     shadowRoot.querySelectorAll(".nav-bar-elem")
       .forEach(link => this.markIfActive(link))
   }
