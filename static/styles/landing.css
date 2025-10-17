@@ -61,6 +61,13 @@ body {
   color: var(--color-text);
 }
 
+#overview {
+  margin-top: 20px;
+  margin-left: 40px;
+
+  width: 300px;
+}
+
 #click-to-action {
   display: flex;
   justify-content: center;
