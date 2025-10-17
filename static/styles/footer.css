@@ -35,8 +35,7 @@
 
   width: 100%;
 
-  gap: calc(var(--padding-amount) * 3);
-
+  gap: 150px;
   z-index: 1;
 }
 
@@ -107,7 +106,7 @@
   width: calc(1920px / 3);
   height: calc(2143px / 3);
 
-  filter: invert(1%) sepia(1%) saturate(1%) hue-rotate(1deg) brightness(100%) opacity(10%);
+  filter: invert(1%) sepia(1%) saturate(1%) hue-rotate(1deg) opacity(10%);
 
   top: -100px;
   position: absolute;
@@ -130,11 +129,12 @@
   align-items: center;
   z-index: 1;
 
-  background-color: rgb(119, 141, 169);
+  background-color: var(--color-footer-bottom-line);
 }
 
 #footer-section>#bottom-line>h4 {
   font-family: "Roboto";
+  font-weight: 300;
 
   color: black;
 }
