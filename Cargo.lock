@@ -9,6 +9,15 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "d71b6127be86fdcfddb610f7182ac57211d4b18a3e9c82eb2d17662f2227ad6a"
 
 [[package]]
+name = "edinburgh-of-the-seven-seas"
+version = "0.1.0"
+dependencies = [
+ "format-bytes",
+ "http",
+ "thiserror",
+]
+
+[[package]]
 name = "fnv"
 version = "1.0.7"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -109,15 +118,6 @@ dependencies = [
  "proc-macro2",
  "quote",
  "syn 2.0.106",
-]
-
-[[package]]
-name = "tourist-blog"
-version = "0.1.0"
-dependencies = [
- "format-bytes",
- "http",
- "thiserror",
 ]
 
 [[package]]
