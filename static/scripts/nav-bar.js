@@ -1,26 +1,18 @@
-class NavBar extends HTMLElement {
+import { CustomElement } from "./shared.js";
+
+class NavBar extends CustomElement {
   constructor() {
     super()
   }
 
   async connectedCallback() {
-    const htmlResp = await fetch("templates/nav-bar.html")
-    const cssResp = await fetch("styles/nav-bar.css")
-
-    let template = document.createElement("template")
-    template.innerHTML = `
-      <style>${await cssResp.text()}</style>
-      ${await htmlResp.text()}
-    `
-
-    const shadowRoot = this.attachShadow({ mode: "closed" })
-    shadowRoot.appendChild(template.content)
+    const shadowRoot = this.init("nav-bar.html", "nav-bar.css")
     shadowRoot.querySelectorAll(".nav-bar-elem")
       .forEach(link => this.markIfActive(link))
   }
 
   markIfActive(link) {
-    // Normalize the href attribute if one was providen without the slash
+    // Normalize the href attribute if one was provided without the slash
     let href = link.getAttribute("href")
     if (!href.startsWith("/")) {
       href = "/" + href
@@ -35,4 +27,4 @@ class NavBar extends HTMLElement {
   }
 }
 
-customElements.define("nav-bar", NavBar)
+customElements.define("nav-bar-template", NavBar)

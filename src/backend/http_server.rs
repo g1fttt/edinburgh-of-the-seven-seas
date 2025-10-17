@@ -98,17 +98,7 @@ fn create_response(request: http::Request<()>) -> io::Result<HttpResponse> {
   };
 
   let extension = content_path.split_once('.').map(|(_, ext)| ext);
-  let content_type = extension.and_then(|ext| {
-    Some(match ext {
-      "html" => ContentType::Html,
-      "css" => ContentType::Css,
-      "js" => ContentType::Js,
-      "png" => ContentType::Png,
-      "jpg" => ContentType::Jpg,
-      "ico" => ContentType::Ico,
-      _ => return None,
-    })
-  });
+  let content_type = extension.and_then(ContentType::from_str);
 
   let dist_path = Path::new("static");
 
@@ -179,6 +169,18 @@ enum ContentType {
 }
 
 impl ContentType {
+  fn from_str(value: &str) -> Option<Self> {
+    Some(match value {
+      "html" => ContentType::Html,
+      "css" => ContentType::Css,
+      "js" => ContentType::Js,
+      "png" => ContentType::Png,
+      "jpg" => ContentType::Jpg,
+      "ico" => ContentType::Ico,
+      _ => return None,
+    })
+  }
+
   fn as_str(self) -> &'static str {
     match self {
       ContentType::Html => "text/html",

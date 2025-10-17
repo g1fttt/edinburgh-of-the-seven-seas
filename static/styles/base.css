@@ -29,6 +29,7 @@
   --background-gradient: linear-gradient(26deg,
       var(--color-background) 0%,
       var(--color-secondary) 100%);
+  --active-brightness: brightness(60%);
 }
 
 html,
@@ -42,6 +43,7 @@ body {
   background-attachment: fixed;
 
   scroll-behavior: smooth;
+  overscroll-behavior: none;
 }
 
 body {

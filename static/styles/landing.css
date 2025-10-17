@@ -94,7 +94,7 @@ body {
 }
 
 #click-to-action:active {
-  filter: brightness(0.6);
+  filter: var(--active-brightness);
 }
 
 @keyframes move-around {
