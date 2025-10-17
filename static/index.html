@@ -55,12 +55,15 @@
           .getBoundingClientRect()
         const discoverSectionAbsPosY = discoverSectionRect.top + window.scrollY
 
-        const isAtTheHeroSection = window.scrollY < discoverSectionAbsPosY
-        const isAtTheDiscoverSection = window.scrollY <= discoverSectionAbsPosY
+        // Handle scroll only when the border was crossed.
+        // Skip handling if user is lower than hero section.
+        if (window.scrollY > discoverSectionAbsPosY) {
+          return
+        }
 
-        if (isScrolledDown && isAtTheHeroSection) {
+        if (isScrolledDown) {
           goToSection("discover-section")
-        } else if (isScrolledUp && isAtTheDiscoverSection) {
+        } else if (isScrolledUp) {
           goToSection("hero-section")
         }
       }, false)
