@@ -2,7 +2,9 @@
 
 > [!WARNING]
 > Important remark:
+>
 > Texts down below that author wrote - DO NOT represent one's real thoughts and ideas.
+>
 > Everything must be interpreted as a joke and satire.
 
 [![forthebadge](https://forthebadge.com/images/badges/kinda-sfw.svg)](https://forthebadge.com)
