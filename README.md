@@ -1,4 +1,10 @@
 # Edinburgh of the Seven Seas
+
+> [!WARNING]
+> Important remark:
+> Texts down below that author wrote - DO NOT represent one's real thoughts and ideas.
+> Everything must be interpreted as a joke and satire.
+
 [![forthebadge](https://forthebadge.com/images/badges/kinda-sfw.svg)](https://forthebadge.com)
 [![forthebadge](https://forthebadge.com/images/badges/fuck-it-ship-it.svg)](https://forthebadge.com)
 [![forthebadge](https://forthebadge.com/images/badges/works-on-my-machine.svg)](https://forthebadge.com)
