@@ -48,15 +48,15 @@
 }
 
 .paragraph h3 {
-  margin-top: 10px;
+  margin-top: 0;
   margin-left: 50px;
-  margin-bottom: 0;
+  margin-bottom: 10px;
 
   font-weight: 300;
 }
 
 .paragraph h4 {
-  margin-top: 10px;
+  margin-top: 0;
   margin-left: 50px;
   margin-bottom: 0;
 

@@ -1,7 +1,7 @@
 #social-proof-block {
   display: flex;
 
-  margin-top: 50px;
+  margin-top: 30px;
 
   justify-content: center;
 
@@ -12,7 +12,7 @@
   display: flex;
   flex-direction: column;
 
-  height: 344px;
+  height: 300px;
 
   --width: 270px;
   min-width: var(--width);
@@ -44,7 +44,7 @@
 }
 
 .card>.number {
-  margin-top: 140px;
+  margin-top: 100px;
   margin-bottom: 0;
 
   align-self: center;
@@ -71,7 +71,7 @@
       var(--color-secondary) 100%);
 }
 
-#food-and-drinks.card {
+#where-to-dine.card {
   background: linear-gradient(212deg,
       var(--color-secondary) 0%,
       var(--color-primary) 100%);
