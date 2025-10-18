@@ -1,9 +1,7 @@
 # Edinburgh of the Seven Seas
 
 > [!WARNING]
-> Important remark:
->
-> Texts down below that author wrote - DO NOT represent one's real thoughts and ideas.
+> The texts down below DO NOT represent author's real thoughts and ideas.
 >
 > Everything must be interpreted as a joke and satire.
 
