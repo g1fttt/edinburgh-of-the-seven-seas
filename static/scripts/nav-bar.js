@@ -12,13 +12,9 @@ class NavBar extends CustomElement {
   }
 
   markIfActive(link) {
-    // Normalize the href attribute if one was provided without the slash
     let href = link.getAttribute("href")
-    if (!href.startsWith("/")) {
-      href = "/" + href
-    }
 
-    const isCurrentPathActive = href === window.location.pathname
+    const isCurrentPathActive = window.location.pathname.includes(href)
     const isRoot = window.location.pathname === "/"
 
     if (isCurrentPathActive || (isRoot && href === "/index.html")) {
