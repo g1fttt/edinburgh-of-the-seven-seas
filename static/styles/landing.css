@@ -14,9 +14,16 @@ body {
   background-position: 0;
 
   overflow: hidden;
+
+  &>#overview {
+    margin-top: 20px;
+    margin-left: 40px;
+
+    width: 300px;
+  }
 }
 
-#slogan-block {
+#hero-section>#slogan-block {
   --left-margin: 26px;
 
   display: flex;
@@ -34,41 +41,40 @@ body {
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
 
-  background: color-mix(in srgb, var(--color-primary) 50%, transparent)
+  background: color-mix(in srgb, var(--color-primary) 50%, transparent);
+
+  & h1 {
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: var(--left-margin);
+
+    font-size: 96px;
+    font-weight: bold;
+  }
+
+  & h2 {
+    margin-top: 10px;
+    margin-left: var(--left-margin);
+
+    font-family: "Roboto";
+    font-size: 48px;
+    font-weight: normal;
+
+    line-height: 0;
+  }
 }
 
-#slogan-block>h1 {
-  margin-top: 0;
-  margin-bottom: 0;
-  margin-left: var(--left-margin);
+@keyframes move-around {
+  from {
+    transform: translateY(0);
+  }
 
-  font-size: 96px;
-  font-weight: bold;
-
-  color: var(--color-text);
+  to {
+    transform: translateY(10px);
+  }
 }
 
-#slogan-block>h2 {
-  margin-top: 10px;
-  margin-left: var(--left-margin);
-
-  font-family: "Roboto";
-  font-size: 48px;
-  font-weight: normal;
-
-  line-height: 0;
-
-  color: var(--color-text);
-}
-
-#overview {
-  margin-top: 20px;
-  margin-left: 40px;
-
-  width: 300px;
-}
-
-#click-to-action {
+#hero-section>#click-to-action {
   display: flex;
   justify-content: center;
 
@@ -88,29 +94,19 @@ body {
   border-radius: 25px;
 
   background-color: var(--color-button-background);
-}
 
-#click-to-action>svg {
-  fill: var(--color-button-content);
-}
+  &:hover {
+    scale: var(--hover-scale);
 
-#click-to-action:hover {
-  scale: var(--hover-scale);
-
-  box-shadow: var(--box-shadow);
-}
-
-#click-to-action:active {
-  filter: var(--active-brightness);
-}
-
-@keyframes move-around {
-  from {
-    transform: translateY(0);
+    box-shadow: var(--box-shadow);
   }
 
-  to {
-    transform: translateY(10px);
+  &:active {
+    filter: var(--active-brightness);
+  }
+
+  &>svg {
+    fill: var(--color-button-content);
   }
 }
 

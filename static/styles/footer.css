@@ -17,61 +17,72 @@
   background-color: black;
 }
 
-#footer-section-inner {
+#footer-section>#container {
   display: flex;
-}
 
-#footer-section-inner>#about-us {
-  max-width: 400px;
-}
+  & #about-us-section {
+    max-width: 400px;
 
-#footer-section-inner>#about-us>#org-name {
-  font-weight: bold;
-}
+    & #organization-name {
+      font-weight: bold;
+    }
+  }
 
-#footer-section-nav-group {
-  display: flex;
-  justify-content: flex-end;
+  & #nav-section {
+    display: flex;
+    justify-content: flex-end;
 
-  width: 100%;
+    width: 100%;
 
-  gap: 150px;
-  z-index: 1;
-}
+    gap: 150px;
+    z-index: 1;
 
-#footer-section-nav-group .nav-group>ul {
-  padding: 0;
+    & .nav-group {
+      &:last-of-type {
+        padding-right: calc(var(--padding-amount) * 2);
+      }
 
-  list-style-type: none;
-}
+      & .name {
+        font-weight: bold;
+      }
 
-#footer-section-nav-group .nav-group>ul li {
-  font-family: "Roboto";
-  font-size: var(--h4-font-size);
+      & ul {
+        padding: 0;
 
-  line-height: 200%;
+        list-style-type: none;
 
-  color: var(--color-text);
-}
+        & li {
+          font-family: "Roboto";
+          font-size: var(--h4-font-size);
 
-#footer-section-nav-group .nav-group>ul li>a {
-  text-decoration: none;
-  color: inherit;
-}
+          line-height: 200%;
 
-#footer-section-nav-group .nav-group>ul li>a:hover {
-  text-decoration: underline;
-}
+          color: var(--color-text);
 
-#footer-section-nav-group .nav-group:last-of-type {
-  padding-right: calc(var(--padding-amount) * 2);
-}
+          & a {
+            &:hover {
+              text-decoration: underline;
+            }
 
-#footer-section-nav-group .nav-group>.nav-group-name {
-  font-weight: bold;
+            text-decoration: none;
+
+            color: inherit;
+          }
+        }
+      }
+    }
+  }
 }
 
 #footer-section>#back-to-top {
+  &:hover {
+    scale: var(--hover-scale);
+  }
+
+  &:active {
+    filter: var(--active-brightness);
+  }
+
   margin-top: auto;
   margin-bottom: var(--padding-amount);
 
@@ -92,13 +103,6 @@
   color: var(--color-text);
 }
 
-#footer-section>#back-to-top:hover {
-  scale: var(--hover-scale);
-}
-
-#footer-section>#back-to-top:active {
-  filter: var(--active-brightness);
-}
 
 #footer-section>#logo-icon {
   align-self: flex-end;
@@ -112,7 +116,6 @@
   position: absolute;
 }
 
-
 #footer-section>#bottom-line {
   --neg-padding-amount: calc(var(--padding-amount) * -1);
 
@@ -125,16 +128,14 @@
   min-width: 100vh;
   height: 35px;
 
+  font-family: "Roboto";
+  font-weight: 300;
+  font-size: var(--h4-font-size);
+
   justify-content: center;
   align-items: center;
   z-index: 1;
 
   background-color: var(--color-footer-bottom-line);
-}
-
-#footer-section>#bottom-line>h4 {
-  font-family: "Roboto";
-  font-weight: 300;
-
   color: black;
 }

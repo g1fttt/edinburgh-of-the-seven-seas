@@ -15,68 +15,82 @@
 
   backdrop-filter: var(--blur);
   box-shadow: 0 1px 4px 0 var(--color-shadow);
-  background: color-mix(in srgb, var(--color-primary) 50%, transparent)
-}
+  background: color-mix(in srgb, var(--color-primary) 50%, transparent);
 
-#nav-bar li:first-of-type {
-  margin-left: auto;
-}
+  &>#title {
+    display: flex;
 
-#nav-bar li:last-of-type {
-  margin-right: 40px;
-}
+    text-decoration: none;
 
-#nav-bar li>a {
-  display: inline-block;
+    &>img {
+      margin-right: 20.91px;
+      margin-left: 40px;
+    }
 
-  padding-left: 32px;
+    &>#name {
+      display: flex;
+      flex-direction: column;
 
-  align-self: flex-end;
+      justify-content: center;
 
-  font-family: "Roboto";
-  font-size: var(--h3-and-p-font-size);
+      &>h1,
+      >h4 {
+        margin: 0;
 
-  text-decoration: none;
+        font-family: "Roboto Condensed";
+        font-weight: 500;
+      }
 
-  transition: var(--transition-time);
-  color: var(--color-text);
-}
+      &>h1 {
+        align-self: flex-start;
 
-#nav-bar li>a:hover {
-  scale: var(--hover-scale);
-}
+        font-variant: small-caps;
 
-#nav-bar li>a.active {
-  text-decoration: underline;
-  text-decoration-thickness: 3px;
-  text-underline-offset: 10px;
-}
+        letter-spacing: 5%;
+      }
 
-#logo {
-  padding-right: 20.91px;
-  padding-left: 40px;
-}
+      &>h4 {
+        align-self: flex-end;
 
-#name * {
-  margin: 0;
-}
+        text-align: right;
+        text-transform: capitalize;
+      }
+    }
+  }
 
-#name>h1 {
-  align-self: flex-start;
+  & li {
+    &:first-of-type {
+      margin-left: auto;
+    }
 
-  font-family: "Roboto Condensed";
-  font-weight: 500;
-  font-variant: small-caps;
+    &:last-of-type {
+      margin-right: 40px;
+    }
 
-  letter-spacing: 5%;
-}
+    &>a {
+      &:hover {
+        scale: var(--hover-scale);
+      }
 
-#name>h4 {
-  align-self: flex-end;
+      &.active {
+        text-decoration: underline;
+        text-decoration-thickness: 3px;
+        text-underline-offset: 10px;
+      }
 
-  font-family: "Roboto Condensed";
-  font-weight: 500;
+      display: inline-block;
 
-  text-align: right;
-  text-transform: capitalize;
+      padding-left: 32px;
+
+      align-self: flex-end;
+
+      font-family: "Roboto";
+      font-size: var(--h3-and-p-font-size);
+
+      text-decoration: none;
+
+      transition: var(--transition-time);
+      color: var(--color-text);
+    }
+  }
 }
